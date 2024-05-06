@@ -6,7 +6,7 @@ namespace MultiShop.Catalog.Entities
     {
         [BsonId]
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)] //Benzersiz olduğunu bildirmek için
-        public string Id { get; set; }
+        public string CategoryId { get; set; }
         public string CategoryName { get; set; }
 
     }
