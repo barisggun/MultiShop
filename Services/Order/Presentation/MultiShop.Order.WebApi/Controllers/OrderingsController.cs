@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MultiShop.Order.Application.Features.Mediator.Commands.OrderingCommands;
 using MultiShop.Order.Application.Features.Mediator.Queries.OrderingQueries;
+using System.Reflection.Metadata.Ecma335;
 
 namespace MultiShop.Order.WebApi.Controllers
 {
@@ -21,6 +23,34 @@ namespace MultiShop.Order.WebApi.Controllers
         {
             var values = await _mediator.Send(new GetOrderingQuery());
             return Ok(values);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetOrderingById(int id)
+        {
+            var values = await _mediator.Send(new GetOrderingByIdQuery(id));
+            return Ok(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateOrdering(CreateOrderingCommand command)
+        {
+            await _mediator.Send(command);
+            return Ok("oluşturuldu");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> RemoveOrdering(int id)
+        {
+            await _mediator.Send(new RemoveOrderingCommand(id));
+            return Ok("silindi");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateOrdering(UpdateOrderingCommand command)
+        {
+            await _mediator.Send(command);
+            return Ok("güncellendi");
         }
     }
 }
