@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\CQRS\Commands\AddressCommand\" />
+    <Folder Include="Features\CQRS\Commands\OrderingCommand\" />
+    <Folder Include="Features\CQRS\Commands\OrderDetailCommand\" />
+    <Folder Include="Features\CQRS\Handlers\AddressHandlers\" />
+    <Folder Include="Features\CQRS\Queries\AddressQueries\" />
+    <Folder Include="Features\CQRS\Results\AddressResults\" />
+    <Folder Include="Features\Mediator\" />
+  </ItemGroup>
+
 </Project>
