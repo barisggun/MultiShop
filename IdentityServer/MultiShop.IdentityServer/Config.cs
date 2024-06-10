@@ -39,12 +39,21 @@ namespace MultiShop.IdentityServer
             //Visitor
             new Client
             {
-                ClientId = "MultiShopVisitor",
+                ClientId = "MultiShopVisitorId",
                 ClientName = "Multi shop visitor user",
                 AllowedGrantTypes = GrantTypes.ClientCredentials, //Kimlik işlemleri için
                 ClientSecrets = {new Secret("multishopsecret".Sha256())},
                 AllowedScopes = {"CatalogReadPermission"}
+            },
 
+            //Manager
+            new Client
+            {
+                ClientId = "MultiShopManagerId",
+                ClientName = "Multi shop manager user",
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                ClientSecrets = { new Secret("multishopsecret".Sha256()) },
+                AllowedScopes = {"CatalogFullPermission","CatalogReadPermission"}
             }
         };
 
