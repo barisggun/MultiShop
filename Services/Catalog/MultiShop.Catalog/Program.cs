@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using MultiShop.Catalog.Services.CategoryServices;
 using MultiShop.Catalog.Services.ProductDetailServices;
@@ -8,6 +9,13 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//eklendi
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.Authority = builder.Configuration["IdentityServerUrl"];
+    opt.RequireHttpsMetadata = false;
+    opt.Audience = "ResourceCatalog";
+});
 // Add services to the container.
 //scope bizim için uygulamada ilgili metot çaðýrýldýðýnda bunun bir nesne örneðini oluþturacak.
 builder.Services.AddScoped<ICategoryService,CategoryService>();
@@ -38,7 +46,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllers();
 

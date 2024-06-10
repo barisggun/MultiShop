@@ -22,9 +22,9 @@ namespace MultiShop.IdentityServer
         public static IEnumerable<IdentityResource> IdentityResources =>
             new IdentityResource[]
             {
-                //new IdentityResources.OpenId(),
-                //new IdentityResources.Email(),
-                //new IdentityResources.Profile()
+                new IdentityResources.OpenId(),
+                new IdentityResources.Email(),
+                new IdentityResources.Profile()
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
