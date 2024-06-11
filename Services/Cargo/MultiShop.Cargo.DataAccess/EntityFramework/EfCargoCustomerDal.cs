@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MultiShop.Cargo.DataAccess.EntityFramework
 {
-    public class EfCargoCustomerDal : GenericRepository<CargoCustomer>, ICargoCustomerdal
+    public class EfCargoCustomerDal : GenericRepository<CargoCustomer>, ICargoCustomerDal
     {
         public EfCargoCustomerDal(CargoContext context) : base(context)
         {
